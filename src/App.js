@@ -1,26 +1,48 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Inc from './Inc';
+import Display from './Display';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+
+  state = {
+    count: 0
+  };
+
+  addState = () => {
+    let newCount = this.state.count + 1;
+    if (this.state.count === 5) {
+      return;
+    }
+    this.setState({
+      count: newCount
+    });
+  }
+
+  resetState = () => {
+    let resetCount = this.state.count - 5;
+    if (this.state.count === 0) {
+      return;
+    }
+    this.setState({
+      count: resetCount
+    });
+  }
+
+
+
+  render = () => {
+    return (
+      <div className="App" >
+        <div className='border'>
+          <Inc state={this.state} />
+          <Display addState={this.addState} resetState={this.resetState} state={this.state} />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
