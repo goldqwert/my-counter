@@ -3,20 +3,53 @@
   box-sizing: border-box;
 }
 
-.border {
+.container {
   padding: 20px 20px;
-  border: 5px solid red;
-  width: 400px;
-  min-height: 400px;
 }
 
-.incBorder {
-  border: 2px solid red;
+.counter_wrapper {
+  background-color: rgba(4, 11, 51, 0.705);
+  border: 5px double black;
+  border-radius: 30px;
+  width: 300px;
+  min-height: 500px;
+}
+
+.counter_wrapper .counter_result {
+  margin-top: 100px;
+  text-align: center;
   width: 50px;
   height: 50px;
+  font-size: 70px;
+  font-weight: 500;
+}
+
+.counter_display {
+    display: flex;
+    align-items: flex-end;
+    min-height: 290px;
+}
+
+.counter_display .counter_inc {
+  width: 70px;
+  height: 70px;
+  border-radius: 100px;
+  background-color: rgba(4, 11, 51, 0.705);
+  color: rgb(255, 255, 255);
+  border: 5px solid green;
+}
+
+.counter_display .counter_reset {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(4, 11, 51, 0.705);
+  border-radius: 100px;
+  color: white;
+  font-size: 12px;
+  border: 5px solid red;
 }
 
 .filter-active {
-  background: yellowgreen;
+  color: rgb(255, 0, 0);
 }
 

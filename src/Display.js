@@ -22,9 +22,9 @@ class Display extends React.Component {
     let disableInc = this.props.state.count === 5;
 
     return (
-      <div className='display'>
-        <button onClick={this.resetCount} >Reset</button>
-        <button onClick={this.addOne} disabled={disableInc}>i++</button>
+      <div className='counter_display'>
+        <button className='counter_inc' onClick={this.addOne} disabled={disableInc}>INC</button>
+        <button className='counter_reset' onClick={this.resetCount}>Reset</button>
       </div>
     );
   }

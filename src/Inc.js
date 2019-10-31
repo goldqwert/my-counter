@@ -8,8 +8,8 @@ class Inc extends React.Component {
     let classForInc = this.props.state.count === 5 ? 'filter-active' : '';
 
     return (
-      <div className='incBorder'>
-        {/* {this.props.count} */}<div className={classForInc}>Inc: {this.props.state.count}</div>
+      <div className='counter_result'>
+        {/* {this.props.count} */}<div className={classForInc}>{this.props.state.count}</div>
       </div>
     );
   }

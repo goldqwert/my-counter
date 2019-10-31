@@ -22,12 +22,8 @@ class App extends React.Component {
   }
 
   resetState = () => {
-    let resetCount = this.state.count - 5;
-    if (this.state.count === 0) {
-      return;
-    }
     this.setState({
-      count: resetCount
+      count: 0
     });
   }
 
@@ -35,8 +31,8 @@ class App extends React.Component {
 
   render = () => {
     return (
-      <div className="App" >
-        <div className='border'>
+      <div className='container'>
+        <div className='counter_wrapper'>
           <Inc state={this.state} />
           <Display addState={this.addState} resetState={this.resetState} state={this.state} />
         </div>
