@@ -1,21 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Inc from './Inc';
+import Buttons from './Buttons';
 import Display from './Display';
+import SettingsDisplay from './SettingsDisplay';
+import SettingsButtons from './SettingsButtons';
 
 
 class App extends React.Component {
 
   state = {
-    count: 0
+    count: 0,
+    maxValue: 0,
+    minValue: 0
   };
 
-  addState = () => {
+  incCount = () => {
     let newCount = this.state.count + 1;
-    if (this.state.count === 5) {
-      return;
-    }
     this.setState({
       count: newCount
     });
@@ -27,14 +27,36 @@ class App extends React.Component {
     });
   }
 
+  addMaxValue = (maxValue) => {
+    this.setState({
+      maxValue: Number(maxValue)
+    })
+  }
 
+  addMinValue = (minValue) => {
+    this.setState({
+      minValue: Number(minValue)
+    })
+  }
+
+
+  changeValueNumbers = () => {
+    this.setState({
+      count: this.state.minValue
+    })
+
+  }
 
   render = () => {
     return (
       <div className='container'>
         <div className='counter_wrapper'>
-          <Inc state={this.state} />
-          <Display addState={this.addState} resetState={this.resetState} state={this.state} />
+          <Display state={this.state} />
+          <Buttons incCount={this.incCount} resetState={this.resetState} count={this.state.count} maxValue={this.state.maxValue} />
+        </div>
+        <div className='counter_settings'>
+          <SettingsDisplay maxValue={this.state.maxValue} minValue={this.state.minValue} addMaxValue={this.addMaxValue} addMinValue={this.addMinValue} />
+          <SettingsButtons changeValueNumbers={this.changeValueNumbers} />
         </div>
       </div>
     );

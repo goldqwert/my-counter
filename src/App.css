@@ -1,10 +1,12 @@
 * {
-  margin: 0 auto;
   box-sizing: border-box;
 }
 
 .container {
-  padding: 20px 20px;
+  padding: 50px 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .counter_wrapper {
@@ -13,43 +15,81 @@
   border-radius: 30px;
   width: 300px;
   min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.counter_wrapper .counter_result {
-  margin-top: 100px;
+
+.counter_wrapper .counter_display {
   text-align: center;
-  width: 50px;
-  height: 50px;
   font-size: 70px;
   font-weight: 500;
 }
 
-.counter_display {
+.counter_buttons {
     display: flex;
-    align-items: flex-end;
-    min-height: 290px;
+    justify-content: space-evenly;
 }
 
-.counter_display .counter_inc {
+.counter_buttons .counter_inc {
   width: 70px;
   height: 70px;
   border-radius: 100px;
-  background-color: rgba(4, 11, 51, 0.705);
-  color: rgb(255, 255, 255);
+  /* background-color: rgba(4, 11, 51, 0.705); */
+  /* color: rgb(255, 255, 255); */
   border: 5px solid green;
+  font-weight: 1000px;
 }
 
-.counter_display .counter_reset {
-  width: 50px;
-  height: 50px;
-  background-color: rgba(4, 11, 51, 0.705);
+.counter_buttons .counter_reset {
+  width: 70px;
+  height: 70px;
+  /* background-color: rgba(4, 11, 51, 0.705); */
   border-radius: 100px;
-  color: white;
-  font-size: 12px;
+  /* color: white; */
   border: 5px solid red;
+  padding: 5px 5px;
 }
 
 .filter-active {
   color: rgb(255, 0, 0);
 }
 
+.counter_settings {
+  background-color: rgba(4, 11, 51, 0.705);
+  border: 5px double black;
+  border-radius: 30px;
+  width: 300px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.settings_display {
+  color: white;
+  width: 94px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.settings_display .settings_max, .settings_display .settings_min {
+  text-align: center;
+  border-radius: 100px; 
+  width: 150px;
+  background-color: black;
+  color: white;
+}
+
+.settings_buttons .settings_set {
+  width: 70px;
+  height: 70px;
+  /* background-color: rgba(4, 11, 51, 0.705); */
+  border-radius: 100px;
+  /* color: white; */
+  border: 5px solid blue;
+  padding: 5px 5px;
+}

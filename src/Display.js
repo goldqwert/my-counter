@@ -1,32 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+const Display = (props) => {
 
-class Display extends React.Component {
+  let classForInc = props.state.count === props.state.maxValue ? 'filter-active' : '';
 
+  return (
+    <div className='counter_display'>
+      {/* {this.props.count} */}<div className={classForInc}>{props.state.count}</div>
+    </div>
+  );
 
-
-  addOne = () => {
-    this.props.addState();
-  }
-
-  resetCount = () => {
-    this.props.resetState();
-  }
-
-
-
-  render = () => {
-
-    let disableInc = this.props.state.count === 5;
-
-    return (
-      <div className='counter_display'>
-        <button className='counter_inc' onClick={this.addOne} disabled={disableInc}>INC</button>
-        <button className='counter_reset' onClick={this.resetCount}>Reset</button>
-      </div>
-    );
-  }
 }
 export default Display;
