@@ -39,7 +39,8 @@
   /* background-color: rgba(4, 11, 51, 0.705); */
   /* color: rgb(255, 255, 255); */
   border: 5px solid green;
-  font-weight: 1000px;
+  outline: none;
+  font-weight: bold;
 }
 
 .counter_buttons .counter_reset {
@@ -50,6 +51,8 @@
   /* color: white; */
   border: 5px solid red;
   padding: 5px 5px;
+  outline: none;
+  font-weight: bold;
 }
 
 .filter-active {
@@ -74,6 +77,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  font-size: 15px;
 }
 
 .settings_display .settings_max, .settings_display .settings_min {
@@ -92,4 +96,6 @@
   /* color: white; */
   border: 5px solid blue;
   padding: 5px 5px;
+  outline: none;
+  font-weight: bold;
 }
