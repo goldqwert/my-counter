@@ -15,7 +15,7 @@ class App extends React.Component {
     incDisabled: false,
     setDisabled: false,
     numbersOnChange: false,
-    inCorrectValue: false
+    changeDisplay: false
   };
 
   incCount = () => {
@@ -121,7 +121,15 @@ class App extends React.Component {
       setDisabled: true,
       incDisabled: false,
       resetDisabled: false,
-      numbersOnChange: false
+      numbersOnChange: false,
+      changeDisplay: false
+    })
+    this.saveState();
+  }
+
+  onChangeDisplay = () => {
+    this.setState({
+      changeDisplay: true
     })
     this.saveState();
   }
@@ -140,7 +148,6 @@ class App extends React.Component {
       incDisabled: false,
       setDisabled: false,
       numbersOnChange: false,
-      inCorrectValue: false
     };
 
 
@@ -149,7 +156,6 @@ class App extends React.Component {
     if (stateAsString != null) {
       state = JSON.parse(stateAsString);
     }
-
     this.setState(state);
   }
 
@@ -160,23 +166,29 @@ class App extends React.Component {
   render = () => {
     return (
       <div className='container'>
-        <div className='counter_wrapper'>
-          <Display state={this.state}
-            numbersOnChange={this.state.numbersOnChange} />
-          <div className='counter_buttons'>
-            <Button
-              title='INC'
-              callback={this.incCount}
-              disabled={this.state.incDisabled}
-            />
-            <Button
-              title='RESET'
-              callback={this.resetCount}
-              disabled={this.state.resetDisabled}
-            />
-          </div>
-        </div>
-        <div className='counter_settings'>
+        {!this.state.changeDisplay &&
+          <div className='counter_wrapper'>
+            <Display state={this.state}
+              numbersOnChange={this.state.numbersOnChange} />
+            <div className='counter_buttons'>
+              <Button
+                title='RESET'
+                callback={this.resetCount}
+                disabled={this.state.resetDisabled}
+              />
+              <Button
+                title='INC'
+                callback={this.incCount}
+                disabled={this.state.incDisabled}
+              />
+              <Button title='SET'
+                callback={this.onChangeDisplay}
+              // disabled={this.state.setDisabled}
+              />
+            </div>
+          </div>}
+
+        {this.state.changeDisplay && <div className='counter_settings'>
           <SettingsDisplay maxValue={this.state.maxValue}
             startValue={this.state.startValue}
             changeMaxValue={this.changeMaxValue}
@@ -185,7 +197,7 @@ class App extends React.Component {
           <Button title='SET'
             callback={this.onSetValue}
             disabled={this.state.setDisabled} />
-        </div>
+        </div>}
       </div>
     );
   }
