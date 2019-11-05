@@ -21,7 +21,7 @@ class App extends React.Component {
   incCount = () => {
     if (this.state.count < this.state.maxValue) {
       this.setState({
-        count: this.state.count + 1
+        count: this.state.count + 1 // bags
       }, () => {
         if (this.state.count === this.state.maxValue) {
           this.setState({
