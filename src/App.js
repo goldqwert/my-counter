@@ -29,8 +29,8 @@ class App extends React.Component {
           });
         }
       })
+      this.saveState();
     }
-    this.saveState();
   }
 
   resetCount = () => {
