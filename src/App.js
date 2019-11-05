@@ -19,16 +19,17 @@ class App extends React.Component {
   };
 
   incCount = () => {
-    let newCount = this.state.count + 1;
-    this.setState({
-      count: newCount
-    }, () => {
-      if (this.state.count === this.state.maxValue) {
-        this.setState({
-          incDisabled: true
-        });
-      }
-    })
+    if (this.state.count < this.state.maxValue) {
+      this.setState({
+        count: this.state.count + 1
+      }, () => {
+        if (this.state.count === this.state.maxValue) {
+          this.setState({
+            incDisabled: true
+          });
+        }
+      })
+    }
     this.saveState();
   }
 
