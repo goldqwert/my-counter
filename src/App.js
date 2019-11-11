@@ -50,25 +50,7 @@ class App extends React.Component {
       numbersOnChange: true,
       count: 'enter value and press \'set\''
     }, () => {
-      if (this.state.maxValue < 0) {
-        this.setState({
-          setDisabled: true,
-          count: 'incorrect number!'
-        })
-      }
-      if (this.state.startValue < 0) {
-        this.setState({
-          setDisabled: true,
-          count: 'incorrect number!'
-        })
-      }
-      if (this.state.startValue > this.state.maxValue) {
-        this.setState({
-          setDisabled: true,
-          count: 'incorrect number!'
-        })
-      }
-      if (this.state.maxValue === this.state.startValue) {
+      if (this.state.maxValue < 0 || this.state.startValue < 0 || this.state.startValue > this.state.maxValue || this.state.maxValue === this.state.startValue) {
         this.setState({
           setDisabled: true,
           count: 'incorrect number!'
@@ -87,25 +69,7 @@ class App extends React.Component {
       numbersOnChange: true,
       count: 'enter value and press \'set\''
     }, () => {
-      if (this.state.startValue < 0) {
-        this.setState({
-          setDisabled: true,
-          count: 'incorrect number!'
-        })
-      }
-      if (this.state.maxValue < 0) {
-        this.setState({
-          setDisabled: true,
-          count: 'incorrect number!'
-        })
-      }
-      if (this.state.startValue > this.state.maxValue) {
-        this.setState({
-          setDisabled: true,
-          count: 'incorrect number!'
-        })
-      }
-      if (this.state.maxValue === this.state.startValue) {
+      if (this.state.startValue < 0 || this.state.maxValue < 0 || this.state.startValue > this.state.maxValue || this.state.maxValue === this.state.startValue) {
         this.setState({
           setDisabled: true,
           count: 'incorrect number!'
