@@ -6,7 +6,7 @@ const Display = (props) => {
   let classForInc = props.state.count === props.state.maxValue ? 'filter-active' :
     props.state.count === 'incorrect number!' ? 'incorrect' : '';
 
-  // let valueDisplay = props.numbersOnChange === true ? 'enter values and press set' : props.state.count;
+  // let valueDisplay = props.numbersOnChange ? 'enter values and press set' : props.state.count;
 
 
   return (

@@ -7,6 +7,10 @@ import Button from './Button';
 
 class App extends React.Component {
 
+  componentDidMount() {
+    this.restoreState();
+  }
+
   state = {
     count: 0,
     maxValue: 5,
@@ -26,10 +30,11 @@ class App extends React.Component {
         if (this.state.count === this.state.maxValue) {
           this.setState({
             incDisabled: true
+          }, () => {
+            this.saveState();
           });
         }
       })
-      this.saveState();
     }
   }
 
@@ -37,8 +42,9 @@ class App extends React.Component {
     this.setState({
       count: this.state.startValue,
       incDisabled: false
+    }, () => {
+      this.saveState();
     });
-    this.saveState();
   }
 
   changeMaxValue = (maxValue) => {
@@ -50,14 +56,15 @@ class App extends React.Component {
       numbersOnChange: true,
       count: 'enter value and press \'set\''
     }, () => {
-      if (this.state.maxValue < 0 || this.state.startValue < 0 || this.state.startValue > this.state.maxValue || this.state.maxValue === this.state.startValue) {
+      if (this.state.maxValue < 0 || this.state.startValue >= this.state.maxValue) {
         this.setState({
           setDisabled: true,
           count: 'incorrect number!'
+        }, () => {
+          this.saveState();
         })
       }
     })
-    this.saveState();
   }
 
   changeStartValue = (startValue) => {
@@ -69,14 +76,16 @@ class App extends React.Component {
       numbersOnChange: true,
       count: 'enter value and press \'set\''
     }, () => {
-      if (this.state.startValue < 0 || this.state.maxValue < 0 || this.state.startValue > this.state.maxValue || this.state.maxValue === this.state.startValue) {
+      if (this.state.startValue < 0 || this.state.startValue >= this.state.maxValue) {
         this.setState({
           setDisabled: true,
           count: 'incorrect number!'
+        }, () => {
+          this.saveState()
         })
       }
     })
-    this.saveState();
+
   }
 
 
@@ -87,8 +96,9 @@ class App extends React.Component {
       incDisabled: false,
       resetDisabled: false,
       numbersOnChange: false
+    }, () => {
+      this.saveState();
     })
-    this.saveState();
   }
 
   saveState = () => {
@@ -114,12 +124,7 @@ class App extends React.Component {
     if (stateAsString != null) {
       state = JSON.parse(stateAsString);
     }
-
     this.setState(state);
-  }
-
-  componentDidMount() {
-    this.restoreState();
   }
 
   render = () => {
