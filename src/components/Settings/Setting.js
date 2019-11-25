@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
+import './Setting.css';
 
 
-const SettingsDisplay = (props) => {
+const Settings = (props) => {
 
   const onChangeMaxValue = (e) => {
     let maxValue = e.currentTarget.value;
@@ -15,7 +15,7 @@ const SettingsDisplay = (props) => {
 
   }
 
-  let classForInput = props.count === 'incorrect number!' ? 'settings_error' : 'settings_inputs';
+  let classForInput = props.incorrectValue ? 'settings_error' : 'settings_inputs';
 
 
   return (
@@ -26,4 +26,4 @@ const SettingsDisplay = (props) => {
   );
 
 }
-export default SettingsDisplay;
+export default Settings;

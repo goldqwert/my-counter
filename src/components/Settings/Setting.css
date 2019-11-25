@@ -1,0 +1,41 @@
+.settings_display {
+    color: white;
+    width: 94px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  .settings_inputs {
+    color: black;
+    width: 94px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 100px;
+    outline: none;
+   }
+  
+  .settings_error {
+    color: black;
+    width: 94px;
+    font-size: 20px;
+    text-align: center;
+    border: 5px solid red;
+    background-color: rgba(255, 0, 0, 0.671);
+    border-radius: 100px;
+    outline: none;
+    -webkit-box-shadow: 0px 0px 300px 71px rgba(255,0,0,1);
+  -moz-box-shadow: 0px 0px 300px 71px rgba(255,0,0,1);
+  box-shadow: 0px 0px 300px 71px rgba(255,0,0,1);
+  }
+  
+  .settings_display .settings_max, .settings_display .settings_min {
+    text-align: center;
+    border-radius: 100px; 
+    width: 150px;
+    background-color: black;
+    color: white;
+  }
+  

@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import Display from './Display';
-import SettingsDisplay from './SettingsDisplay';
-import Button from './Button';
-
+import Display from './components/Display/Display';
+import Settings from './components/Settings/Setting';
+import Button from './components/Buttons/Button';
 
 class App extends React.Component {
 
@@ -18,23 +17,27 @@ class App extends React.Component {
     resetDisabled: false,
     incDisabled: false,
     setDisabled: false,
-    numbersOnChange: false,
-    inCorrectValue: false
+    incorrectValue: false,
+    isValuesSet: false
+
   };
 
   incCount = () => {
     if (this.state.count < this.state.maxValue) {
       this.setState({
-        count: this.state.count + 1 // bags
+        count: this.state.count + 1
       }, () => {
-        if (this.state.count === this.state.maxValue) {
-          this.setState({
-            incDisabled: true
-          }, () => {
-            this.saveState();
-          });
-        }
+        this.changeIncDisabled();
+        this.saveState();
       })
+    }
+  }
+
+  changeIncDisabled = () => {
+    if (this.state.count === this.state.maxValue) {
+      this.setState({
+        incDisabled: true
+      });
     }
   }
 
@@ -53,17 +56,10 @@ class App extends React.Component {
       setDisabled: false,
       resetDisabled: true,
       incDisabled: true,
-      numbersOnChange: true,
-      count: 'enter value and press \'set\''
+      isValuesSet: false
     }, () => {
-      if (this.state.maxValue < 0 || this.state.startValue >= this.state.maxValue) {
-        this.setState({
-          setDisabled: true,
-          count: 'incorrect number!'
-        }, () => {
-          this.saveState();
-        })
-      }
+      this.changeSetDisabled()
+      this.saveState();
     })
   }
 
@@ -73,29 +69,33 @@ class App extends React.Component {
       setDisabled: false,
       resetDisabled: true,
       incDisabled: true,
-      numbersOnChange: true,
-      count: 'enter value and press \'set\''
+      isValuesSet: false
     }, () => {
-      if (this.state.startValue < 0 || this.state.startValue >= this.state.maxValue) {
-        this.setState({
-          setDisabled: true,
-          count: 'incorrect number!'
-        }, () => {
-          this.saveState()
-        })
-      }
+      this.changeSetDisabled()
+      this.saveState();
     })
-
   }
 
+  changeSetDisabled = () => {
+    if (this.state.maxValue < 0 || this.state.startValue < 0 || this.state.startValue >= this.state.maxValue) {
+      this.setState({
+        setDisabled: true,
+        incorrectValue: true
+      })
+    } else if (this.state.maxValue > this.state.startValue) {
+      this.setState({
+        incorrectValue: false
+      })
+    }
+  }
 
-  onSetValue = () => {
+  setValue = () => {
     this.setState({
       count: this.state.startValue,
       setDisabled: true,
       incDisabled: false,
       resetDisabled: false,
-      numbersOnChange: false
+      isValuesSet: true
     }, () => {
       this.saveState();
     })
@@ -114,10 +114,9 @@ class App extends React.Component {
       resetDisabled: false,
       incDisabled: false,
       setDisabled: false,
-      numbersOnChange: false,
-      inCorrectValue: false
+      incorrectValue: false,
+      isValuesSet: false
     };
-
 
     let stateAsString = localStorage.getItem('our-state');
 
@@ -132,7 +131,7 @@ class App extends React.Component {
       <div className='container'>
         <div className='counter_wrapper'>
           <Display state={this.state}
-            numbersOnChange={this.state.numbersOnChange} />
+          />
           <div className='counter_buttons'>
             <Button
               title='INC'
@@ -147,13 +146,14 @@ class App extends React.Component {
           </div>
         </div>
         <div className='counter_settings'>
-          <SettingsDisplay maxValue={this.state.maxValue}
+          <Settings maxValue={this.state.maxValue}
             startValue={this.state.startValue}
             changeMaxValue={this.changeMaxValue}
-            count={this.state.count}
-            changeStartValue={this.changeStartValue} />
+            changeStartValue={this.changeStartValue}
+            incorrectValue={this.state.incorrectValue} />
+
           <Button title='SET'
-            callback={this.onSetValue}
+            callback={this.setValue}
             disabled={this.state.setDisabled} />
         </div>
       </div>
