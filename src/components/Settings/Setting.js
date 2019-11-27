@@ -5,13 +5,11 @@ import './Setting.css';
 const Settings = (props) => {
 
   const onChangeMaxValue = (e) => {
-    let maxValue = e.currentTarget.value;
-    props.changeMaxValue(maxValue);
+    props.changeMaxValue(e.currentTarget.value.replace(/\./g, ''));
   }
 
   const onChangeStartValue = (e) => {
-    let startValue = e.currentTarget.value;
-    props.changeStartValue(startValue)
+    props.changeStartValue(e.currentTarget.value.replace(/\./g, ''))
 
   }
 
@@ -20,8 +18,8 @@ const Settings = (props) => {
 
   return (
     <div className='settings_display'>
-      MAX VALUE: <input onChange={onChangeMaxValue} value={props.maxValue} className={classForInput} type='number' max='99' min='-99' />
-      START VALUE: <input onChange={onChangeStartValue} value={props.startValue} className={classForInput} type='number' max='99' min='-99' />
+      MAX VALUE: <input onChange={onChangeMaxValue} value={props.maxValue} className={classForInput} pattern="\d+" type='number' max='99' min='-99' />
+      START VALUE: <input onChange={onChangeStartValue} value={props.startValue} className={classForInput} pattern="\d+" type='number' max='99' min='-99' />
     </div >
   );
 

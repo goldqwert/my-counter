@@ -3,17 +3,17 @@ import './Display.css';
 
 const Display = (props) => {
 
-  let display = props.state.incorrectValue
+  let display = props.incorrectValue
     ? 'incorrect value'
-    : (props.state.isValuesSet ? props.state.count : 'enter values and set button')
+    : (props.isValuesSet ? props.count : 'enter values and set button')
 
-  let classForInc = display === props.state.maxValue ? 'max_counter_active' :
-    display === 'incorrect value' ? 'incorrect' : '';
-
+  let classForInc = display === props.maxValue ? 'display_max_value' :
+    display === 'incorrect value' ? 'display_incorrect_value' : 'display_counter';
+  debugger
   return (
-    <div className='counter_display'>
-      <div className={classForInc}>{display}</div>
-    </div>
+
+    <div className={classForInc}>{display}</div>
+
   );
 
 }
